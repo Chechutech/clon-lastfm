@@ -1,3 +1,23 @@
+
+
+header {
+    height:6vh;
+    background-color: #222;
+    display:flex;
+    justify-content: center;
+}
+.logo-img {
+    height: 4vh;
+    padding: 0.5em 0.5em;
+}
+body {
+    background-color: #fff;
+    font-family:Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif;
+}
+ul {
+    list-style: none;
+}
+
 /* Colores:
    --color-primary:  #222
    --color-secondary: rgba(110, 69, 51, 1);
