@@ -9,16 +9,21 @@ function fetchSongs(){
     });
   
 }
-
+fetchSongs();
 
 
 function createListSong(song){
-    // crear el ol
-    const card = document.createElement('ol');
-    card.classList.add('song-card');
-    // traer el nombre
-    const name = document.createElement('p');
-    name.classList.add('name');
-    name.textContent = song.name.charAt(0).toUpperCase() + song.name.slice(1); 
+    for(let i=0; i<song.length; i++){
+        // crear el ol
+        const card = document.createElement('ol');
+        card.classList.add('song-card');
+        // traer el nombre
+        const name = document.createElement('p');
+        console.log(name);
+        name.classList.add('name');
+        name.textContent = song[i].name;
+    }
 }
+
+createListSong(fetchSongs());
 
