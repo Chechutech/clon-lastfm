@@ -18,6 +18,39 @@ ul {
     list-style: none;
 }
 
+ol {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.grid {
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+    padding: 1rem;
+}
+.genre {
+    position: relative;
+    display: inline-block;
+    text-align: center
+}
+
+@media (min-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.genre-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+
 /* Colores:
    --color-primary:  #222
    --color-secondary: rgba(110, 69, 51, 1);

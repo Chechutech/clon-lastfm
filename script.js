@@ -46,7 +46,7 @@ function createListSong(song){
         // traer número de escuchas
         let newListeners = document.createElement('p');
         newListeners.classList.add('listeners-list');
-
+        newListeners.textContent = song[i].listeners
         
         newList.appendChild(iconList);
         newList.appendChild(newGroupNameSong)
