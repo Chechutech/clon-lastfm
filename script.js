@@ -19,9 +19,10 @@ function createListSong(song){
         card.classList.add('song-card');
         // traer el nombre
         const name = document.createElement('p');
-        console.log(name);
+        
         name.classList.add('name');
         name.textContent = song[i].name;
+        console.log(name);
     }
 }
 
