@@ -15,35 +15,38 @@ fetchSongs();
 function createListSong(song){
     
     // crear el ol
-    let card = document.createElement('ol');
-    card.classList.add('song-card');
+    let card = document.createElement('table');
+    card.classList.add('table');
+    card.classList.add('table-striped');
 
-    //crear título de la lista
-    let listTitle = document.createElement('h3');
-    listTitle.classList.add('list-title');
+    for(let i=0; i<song.length; i++){
+        //crear título de la lista
+        let listTitle = document.createElement('tr');
+        listTitle.classList.add('list-title');
 
     for(let i=0; i<song.length; i++){
         
-        // crear li
-        let newList = document.createElement('li');
+        // crear tr
+        let newList = document.createElement('tr');
         newList.classList.add('element-list');
         
         // crear icono
         let iconList = document.createElement('i');
-        //iconList.src = <i class="fa-solid fa-play"></i>
+        iconList.classList.add('fa-solid');
+        iconList.classList.add('fa-circle-play');
         
         // traer el nombre de la canción
-        const name = document.createElement('p');
+        const name = document.createElement('th');
         name.classList.add('name');
         name.textContent = song[i].name;
         
         //traer el nombre del grupo
-        let newGroupNameSong = document.createElement('p');
+        let newGroupNameSong = document.createElement('td');
         newGroupNameSong.classList.add('nameGroup-list');
         newGroupNameSong.textContent = song[i].artist.name
         
         // traer número de escuchas
-        let newListeners = document.createElement('p');
+        let newListeners = document.createElement('td');
         newListeners.classList.add('listeners-list');
         newListeners.textContent = song[i].listeners
         
@@ -60,7 +63,6 @@ function createListSong(song){
     }
     listSong.appendChild(card)
 }
-
 
 
 /*
