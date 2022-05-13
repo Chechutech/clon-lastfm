@@ -18,12 +18,11 @@ function createListSong(song){
     let card = document.createElement('ol');
     card.classList.add('song-card');
 
-    for(let i=0; i<song.length; i++){
-        //crear título de la lista
-        let listTitle = document.createElement('h3');
-        listTitle.classList.add('list-title');
+    //crear título de la lista
+    let listTitle = document.createElement('h3');
+    listTitle.classList.add('list-title');
 
-        
+    for(let i=0; i<song.length; i++){
         
         // crear li
         let newList = document.createElement('li');
