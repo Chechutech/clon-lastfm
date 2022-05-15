@@ -19,7 +19,7 @@ function createListSong(song){
     card.classList.add('table');
     card.classList.add('table-striped');
 
-    for(let i=0; i<song.length; i++){
+  
         //crear título de la lista
         let listTitle = document.createElement('tr');
         listTitle.classList.add('list-title');
@@ -57,8 +57,6 @@ function createListSong(song){
 
         card.appendChild(newList);
         card.appendChild(listTitle);
-
-       
 
     }
     listSong.appendChild(card)
@@ -122,3 +120,25 @@ function createListSong(song){
      
     listSong.appendChild(table)
 }
+*/
+
+//Historia 3 - falta vaciar la lista al empezar - 
+function fetchTop10Songs(){
+    fetch("music.json")
+    .then(response => response.json())
+    .then(data => {
+        data.sort(function compare(songA,songB){
+            let listenersSongA = parseInt(songA.listeners)
+            let listenersSongB = parseInt(songB.listeners)
+            return listenersSongB - listenersSongA
+        })
+        const top10Songs = data.slice(0, 10);
+
+      createListSong(data)
+      console.log(data);
+    });
+  
+}
+
+const buttonTop10 = document.querySelector(".topTenFilter");
+buttonTop10.addEventListener("click", fetchTop10Songs);
