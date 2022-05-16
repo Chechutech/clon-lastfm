@@ -145,9 +145,14 @@ function fetchTop10Songs(){
 }
 
 
+
+
+
 const buttonTop10 = document.querySelector(".topTenFilter");
 buttonTop10.addEventListener("click", fetchTop10Songs);
 
 const overview = document.querySelector(".overviewFilter");
 overview.addEventListener("click", createListSong);
+
+
 
