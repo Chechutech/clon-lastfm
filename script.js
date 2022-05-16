@@ -19,12 +19,13 @@ fetchSongs();
     card.classList.add('table');
     card.classList.add('table-striped');
 
-    for(let i=0; i<song.length; i++){
+  
         //crear título de la lista
         let listTitle = document.createElement('tr');
         listTitle.classList.add('list-title');
 
     for(let i=0; i<song.length; i++){
+
         
         // crear tr
         let newList = document.createElement('tr');
@@ -36,7 +37,7 @@ fetchSongs();
         iconList.classList.add('fa-circle-play');
         
         // traer el nombre de la canción
-        const name = document.createElement('th');
+        const name = document.createElement('td');
         name.classList.add('name');
         name.textContent = song[i].name;
         
@@ -48,7 +49,7 @@ fetchSongs();
         // traer número de escuchas
         let newListeners = document.createElement('td');
         newListeners.classList.add('listeners-list');
-        newListeners.textContent = song[i].listeners
+        newListeners.textContent = song[i].listeners + ' listeners'
         
         newList.appendChild(iconList);
         newList.appendChild(newGroupNameSong)
@@ -57,8 +58,6 @@ fetchSongs();
 
         card.appendChild(newList);
         card.appendChild(listTitle);
-
-       
 
     }
     listSong.appendChild(card)
@@ -124,3 +123,32 @@ function createListSong(song){
      
     listSong.appendChild(table)
 }
+*/
+
+//Historia 3 - falta vaciar la lista al empezar - 
+function fetchTop10Songs(){
+    listSong.innerHTML = "";
+    fetch("music.json")
+    .then(response => response.json())
+    .then(data => {
+        data.sort(function compare(songA,songB){
+            let listenersSongA = parseInt(songA.listeners)
+            let listenersSongB = parseInt(songB.listeners)
+            return listenersSongB - listenersSongA
+        })
+        
+        const top10Songs = data.slice(0, 10);
+
+      createListSong(top10Songs)
+      console.log(data);
+    });
+  
+}
+
+
+const buttonTop10 = document.querySelector(".topTenFilter");
+buttonTop10.addEventListener("click", fetchTop10Songs);
+
+const overview = document.querySelector(".overviewFilter");
+overview.addEventListener("click", createListSong);
+
