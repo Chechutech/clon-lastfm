@@ -11,7 +11,6 @@ function fetchSongs(){
 }
 fetchSongs();
 
-/*
 function createListSong(song){
     
     // crear el ol
@@ -36,7 +35,7 @@ function createListSong(song){
         iconList.classList.add('fa-circle-play');
         
         // traer el nombre de la canción
-        const name = document.createElement('th');
+        const name = document.createElement('td');
         name.classList.add('name');
         name.textContent = song[i].name;
         
@@ -48,7 +47,7 @@ function createListSong(song){
         // traer número de escuchas
         let newListeners = document.createElement('td');
         newListeners.classList.add('listeners-list');
-        newListeners.textContent = song[i].listeners
+        newListeners.textContent = song[i].listeners + ' listeners'
         
         newList.appendChild(iconList);
         newList.appendChild(newGroupNameSong)
@@ -61,12 +60,12 @@ function createListSong(song){
     }
     listSong.appendChild(card)
 }
-*/
+
 
 
 createListSong(fetchSongs()); 
 
-/*VERSION TABLA ALTERNATIVA CECI*/
+/*VERSION TABLA ALTERNATIVA CECI
 function createListSong(song){
     
     // crear la tabla
@@ -120,7 +119,7 @@ function createListSong(song){
      
     listSong.appendChild(table)
 }
-
+*/
 
 //Historia 3 - falta vaciar la lista al empezar - 
 function fetchTop10Songs(){
@@ -132,9 +131,10 @@ function fetchTop10Songs(){
             let listenersSongB = parseInt(songB.listeners)
             return listenersSongB - listenersSongA
         })
+        
         const top10Songs = data.slice(0, 10);
 
-      createListSong(songs)
+      createListSong(top10Songs)
       console.log(data);
     });
   
@@ -142,3 +142,6 @@ function fetchTop10Songs(){
 
 const buttonTop10 = document.querySelector(".topTenFilter");
 buttonTop10.addEventListener("click", fetchTop10Songs);
+
+const buttonOverview = document.querySelector(".overviewFilter");
+buttonOverview.addEventListener("click", createListSong(song));
