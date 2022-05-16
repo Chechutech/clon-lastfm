@@ -14,6 +14,7 @@ fetchSongs();
 
 function createListSong(song){
     
+    
     // crear el ol
     let card = document.createElement('table');
     card.classList.add('table');
@@ -25,6 +26,7 @@ function createListSong(song){
         listTitle.classList.add('list-title');
 
     for(let i=0; i<song.length; i++){
+
         
         // crear tr
         let newList = document.createElement('tr');
@@ -124,6 +126,7 @@ function createListSong(song){
 
 //Historia 3 - falta vaciar la lista al empezar - 
 function fetchTop10Songs(){
+    listSong.innerHTML = "";
     fetch("music.json")
     .then(response => response.json())
     .then(data => {
@@ -141,5 +144,10 @@ function fetchTop10Songs(){
   
 }
 
+
 const buttonTop10 = document.querySelector(".topTenFilter");
 buttonTop10.addEventListener("click", fetchTop10Songs);
+
+const overview = document.querySelector(".overviewFilter");
+overview.addEventListener("click", createListSong);
+
