@@ -1,3 +1,8 @@
+window.onload=function(){
+    $(`#onload`).fadeOut();
+    $(body).removeClass("hidden");
+}
+
 const listSong = document.getElementById("listSong");
 
 let arraySongs = []
