@@ -1,6 +1,8 @@
 const listSong = document.getElementById('listSong');
 
 function fetchSongs(){
+    
+    listSong.innerHTML = "";
     fetch("music.json")
     .then(response => response.json())
     .then(data => {
@@ -24,6 +26,7 @@ function createListSong(song){
         listTitle.classList.add('list-title');
 
     for(let i=0; i<song.length; i++){
+
         
         // crear tr
         let newList = document.createElement('tr');
@@ -33,7 +36,7 @@ function createListSong(song){
         let iconList = document.createElement('i');
         iconList.classList.add('fa-solid');
         iconList.classList.add('fa-circle-play');
-        
+
         // traer el nombre de la canción
         const name = document.createElement('td');
         name.classList.add('name');
@@ -63,7 +66,7 @@ function createListSong(song){
 
 
 
-createListSong(fetchSongs()); 
+//createListSong(fetchSongs()); 
 
 /*VERSION TABLA ALTERNATIVA CECI
 function createListSong(song){
@@ -123,6 +126,7 @@ function createListSong(song){
 
 //Historia 3 - falta vaciar la lista al empezar - 
 function fetchTop10Songs(){
+    listSong.innerHTML = "";
     fetch("music.json")
     .then(response => response.json())
     .then(data => {
@@ -133,15 +137,17 @@ function fetchTop10Songs(){
         })
         
         const top10Songs = data.slice(0, 10);
-
+        console.log(data,top10Songs);
       createListSong(top10Songs)
-      console.log(data);
+      
     });
   
 }
 
+
 const buttonTop10 = document.querySelector(".topTenFilter");
 buttonTop10.addEventListener("click", fetchTop10Songs);
 
-const buttonOverview = document.querySelector(".overviewFilter");
-buttonOverview.addEventListener("click", createListSong(song));
+const overview = document.querySelector(".overviewFilter");
+overview.addEventListener("click", fetchSongs);
+
