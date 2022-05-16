@@ -36,7 +36,7 @@ function createListSong(song){
         iconList.classList.add('fa-circle-play');
         
         // traer el nombre de la canción
-        const name = document.createElement('th');
+        const name = document.createElement('td');
         name.classList.add('name');
         name.textContent = song[i].name;
         
