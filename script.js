@@ -228,4 +228,22 @@ function fetchPopSongs() {
  })
 }
 const pop = document.getElementById('pop');
-pop.addEventListener("click", fetchPopSongs); 
+pop.addEventListener("click", fetchPopSongs);
+
+function fetchIndieSongs() {
+    listSong.innerHTML = "";
+    fetch("music.json")
+      .then((response) => response.json())
+      .then((data) => {
+          function filtrarPorIndie(data) {
+        if (data.genres.includes("indie"
+        ))
+        return data
+      };
+      const listaIndie = data.filter(filtrarPorIndie)
+    console.log({listaIndie})
+    createListSong(listaIndie)
+ })
+}
+const indie = document.getElementById('indie');
+indie.addEventListener("click", fetchIndieSongs);
