@@ -48,7 +48,7 @@ function createListSong(song){
         // traer número de escuchas
         let newListeners = document.createElement('td');
         newListeners.classList.add('listeners-list');
-        newListeners.textContent = song[i].listeners
+        newListeners.textContent = song[i].listeners + ' listeners'
         
         newList.appendChild(iconList);
         newList.appendChild(newGroupNameSong)
@@ -132,9 +132,10 @@ function fetchTop10Songs(){
             let listenersSongB = parseInt(songB.listeners)
             return listenersSongB - listenersSongA
         })
+        
         const top10Songs = data.slice(0, 10);
 
-      createListSong(data)
+      createListSong(top10Songs)
       console.log(data);
     });
   
