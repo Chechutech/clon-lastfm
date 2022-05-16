@@ -12,9 +12,9 @@ function fetchSongs(){
 fetchSongs();
 
 
-function createListSong(song){
+ /*function createListSong(song){
     
-    // crear el ol
+    crear el ol
     let card = document.createElement('table');
     card.classList.add('table');
     card.classList.add('table-striped');
@@ -63,12 +63,13 @@ function createListSong(song){
     }
     listSong.appendChild(card)
 }
+*/
 
 
-/*
-createListSong(fetchSongs()); */
+//createListSong(fetchSongs());
 
-/*VERSION TABLA ALTERNATIVA CECI
+//VERSION TABLA ALTERNATIVA CECI
+
 function createListSong(song){
     
     // crear la tabla
@@ -86,7 +87,8 @@ function createListSong(song){
         
         // crear icono
         const iconList = document.createElement('td');
-        //iconList.src = <i class="fa-solid fa-play"></i>
+       iconList.classList.add('fa-solid');
+        iconList.classList.add('fa-circle-play');
         rowListSong.appendChild(iconList);
 
         // crear el numero de la lista
