@@ -11,7 +11,7 @@ function fetchSongs(){
 }
 fetchSongs();
 
-
+/*
 function createListSong(song){
     
     // crear el ol
@@ -61,12 +61,12 @@ function createListSong(song){
     }
     listSong.appendChild(card)
 }
+*/
 
 
-/*
-createListSong(fetchSongs()); */
+createListSong(fetchSongs()); 
 
-/*VERSION TABLA ALTERNATIVA CECI
+/*VERSION TABLA ALTERNATIVA CECI*/
 function createListSong(song){
     
     // crear la tabla
@@ -120,7 +120,7 @@ function createListSong(song){
      
     listSong.appendChild(table)
 }
-*/
+
 
 //Historia 3 - falta vaciar la lista al empezar - 
 function fetchTop10Songs(){
@@ -134,7 +134,7 @@ function fetchTop10Songs(){
         })
         const top10Songs = data.slice(0, 10);
 
-      createListSong(data)
+      createListSong(songs)
       console.log(data);
     });
   
