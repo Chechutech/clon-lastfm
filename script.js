@@ -1,15 +1,19 @@
 const listSong = document.getElementById('listSong');
 
+
 function fetchSongs(){
+    listSong.innerHTML = "";
     fetch("music.json")
     .then(response => response.json())
     .then(data => {
-      createListSong(data)
+      createListSong(data);
       console.log(data);
     });
+    
   
 }
 fetchSongs();
+
 
 
 function createListSong(song){
@@ -141,13 +145,19 @@ function fetchTop10Songs(){
       createListSong(top10Songs)
       console.log(data);
     });
-  
 }
+
+
+
+
 
 
 const buttonTop10 = document.querySelector(".topTenFilter");
 buttonTop10.addEventListener("click", fetchTop10Songs);
 
 const overview = document.querySelector(".overviewFilter");
-overview.addEventListener("click", createListSong);
+overview.addEventListener("click", fetchSongs);
+
+
+
 
