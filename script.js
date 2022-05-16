@@ -1,7 +1,4 @@
-document.body.onload = function() {
-    
-  }
-const listSong = document.getElementById("listSong");
+
 
 let arraySongs = []
 function fetchSongs() {
