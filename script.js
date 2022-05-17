@@ -11,9 +11,9 @@ function fetchSongs() {
   fetch("music.json")
     .then((response) => response.json())
     .then((data) => {
-      createListSong(data)
-      arraySongs = data
-      console.log(arraySongs)
+      createListSong(data);
+      arraySongs = data;
+      console.log(arraySongs);
       console.log(data);
     });
 }
@@ -73,7 +73,7 @@ function createListSong(song) {
 }
 
 
-//Historia 3 - falta vaciar la lista al empezar -
+//Historia 3 - 
 function fetchTop10Songs() {
   listSong.innerHTML = "";
   fetch("music.json")
@@ -98,18 +98,6 @@ const overview = document.querySelector(".overviewFilter");
 overview.addEventListener("click", fetchSongs);
 
 //Historia 4 - rock
-/*
-function filtrarPorRock(arraySongs){
-    if (arraySongs.genres.includes('rock'))
-    return arraySongs
-}
-const listaRock = arraySongs.filter(filtrarPorRock)
-console.log({listaRock})
-console.log('arraySongs', JSON.stringify (arraySongs)) 
-
-function fetchRock 
-*/
-
 function fetchRockSongs() {
   
  listSong.innerHTML = "";
@@ -200,4 +188,79 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
+<<<<<<< HEAD
+//The biggest
 
+function fetchBiggest() {
+  listSong.innerHTML = "";
+  fetch("music.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const arraySongs = data
+      
+      console.log(arraySongs)
+
+      //Creamos un nuevo objeto donde vamos a almacenar por grupos. 
+      let escuchasArtista = {}
+      //Recorremos el array 
+      arraySongs.forEach( x => {
+        if( !escuchasArtista.hasOwnProperty(x.artist.name)){
+          escuchasArtista[x.artist.name] = {
+            nombre:x.artist.name,
+            escuchas: 0
+          }
+        }
+  
+        //Agregamos los datos de escuchas. 
+        let listenersNumber = parseInt(x.listeners)
+        escuchasArtista[x.artist.name].escuchas += listenersNumber
+  
+      })
+
+      console.log({escuchasArtista})
+      
+      const convertedListenersNumber = Object.values(escuchasArtista)
+      console.log(convertedListenersNumber)
+
+      convertedListenersNumber.sort(function compare(listenersA, listenersB) {
+        let bigListenersA = listenersA.escuchas;
+        let bigListenersB = listenersB.escuchas;
+        return bigListenersB - bigListenersA;
+      });
+      
+      const theBiggest = convertedListenersNumber[0]
+      console.log(theBiggest);
+      createListSong(fetchBiggest);
+
+      function filtrarPorMoreListeners(data) {
+        if (data.artist.name.includes(theBiggest.nombre
+            ))
+            return data
+      };
+        const listaTheBiggest = data.filter(filtrarPorMoreListeners)
+        console.log({listaTheBiggest})
+        createListSong(listaTheBiggest)
+
+    });
+}
+const biggestFilter =  document.querySelector('.theBiggestFilter');
+biggestFilter.addEventListener("click", fetchBiggest);
+=======
+
+<<<<<<< HEAD
+=======
+
+const groupBy = function (miarray, prop) {
+    return miarray.reduce(function(groups, item) {
+        var val = item[prop];
+        groups[val] = groups[val] || {date: item.date, pv: 0, ac: 0,ev: 0};
+        groups[val].pv += item.pv;
+        groups[val].ac += item.ac;
+        groups[val].ev += item.ev;
+        return groups;
+    }, {});
+}
+
+console.log(groupBy(rawtData,'date'));
+>>>>>>> fdb3816e318bb0724422095211815235a7d93750
+>>>>>>> b3f372592e3cc5c1e2432633c8d8e260f6d46bae
