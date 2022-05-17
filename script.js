@@ -1,6 +1,6 @@
 window.onload=function(){
     $(`#onload`).fadeOut();
-    $(body).removeClass("hidden");
+    $('body').removeClass("hidden");
 }
 
 const listSong = document.getElementById("listSong");
@@ -40,22 +40,21 @@ function createListSong(song) {
     iconList.classList.add("fa-solid");
     iconList.classList.add("fa-circle-play");
 
-    /* traer el nombre de la canción
+    // traer el nombre de la canción y crear url
     const name = document.createElement("td");
     name.classList.add("name");
-    name.textContent = song[i].name;*/
-    const name = document.createElement("td");
     const enlace = document.createElement("a");
-    name.classList.add("name");
-    name.innerHTML = song[i].name;
-    enlace.href= "https://www.exampleurl.com";
-    name.appendChild(enlace);
-
+    enlace.setAttribute("href", song[i].url);
+    enlace.textContent = song[i].name;
+    name.appendChild(enlace)
 
     //traer el nombre del grupo
     let newGroupNameSong = document.createElement("td");
     newGroupNameSong.classList.add("nameGroup-list");
-    newGroupNameSong.textContent = song[i].artist.name;
+    const enlaceGrupo = document.createElement("a");
+    enlaceGrupo.setAttribute("href", song[i].artist.url);
+    enlaceGrupo.textContent = song[i].artist.name;
+    newGroupNameSong.appendChild(enlaceGrupo)
 
     // traer número de escuchas
     let newListeners = document.createElement("td");
@@ -71,64 +70,6 @@ function createListSong(song) {
     card.appendChild(listTitle);
   }
   listSong.appendChild(card);
-}
-
-
-//createListSong(fetchSongs());
-
-function createListSong(song){
-    
-    // crear la tabla
-    let table = document.createElement('table');
-    table.classList.add('Music');
-       // crear tabla body
-    let body = document.createElement('tbody');
-    body.classList.add('bodytable');
-    
-    for(let i=0; i<song.length; i++){
-        
-        let rowListSong = document.createElement('tr');
-        rowListSong.classList.add('element-row');
-        
-        
-        // crear icono
-        const iconList = document.createElement('td');
-       iconList.classList.add('fa-solid');
-        iconList.classList.add('fa-circle-play');
-        rowListSong.appendChild(iconList);
-
-        // crear el numero de la lista
-        let attr = document.createElement('td');
-        attr.classList.add('listnumer');
-        attr.textContent = song[i].attr;
-        rowListSong.appendChild(attr);
-
-
-        // traer el nombre de la canción
-        let name = document.createElement('td');
-        name.classList.add('name');
-        name.textContent = song[i].name;
-        rowListSong.appendChild(name);
-        
-        //traer el nombre del grupo
-        let newGroupNameSong = document.createElement('td');
-        newGroupNameSong.classList.add('nameGroup-table');
-        newGroupNameSong.textContent = song[i].artist.name;
-        rowListSong.appendChild(newGroupNameSong);
-        
-        // traer número de escuchas
-        let newListeners = document.createElement('td');
-        newListeners.classList.add('listeners-table');
-        newListeners.textContent = song[i].listeners + ' listeners';
-        rowListSong.appendChild(newListeners);
-
-        
-        body.appendChild(rowListSong);
-        table.appendChild(body);     
-      
-    }
-     
-    listSong.appendChild(table)
 }
 
 
@@ -261,4 +202,15 @@ const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
 
 
+const groupBy = function (miarray, prop) {
+    return miarray.reduce(function(groups, item) {
+        var val = item[prop];
+        groups[val] = groups[val] || {date: item.date, pv: 0, ac: 0,ev: 0};
+        groups[val].pv += item.pv;
+        groups[val].ac += item.ac;
+        groups[val].ev += item.ev;
+        return groups;
+    }, {});
+}
 
+console.log(groupBy(rawtData,'date'));
