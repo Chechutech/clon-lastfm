@@ -26,3 +26,15 @@ const name = document.createElement("td");
     name.innerHTML = song[i].name;
     enlace.setAttribute("href", "https://www.exampleurl.com");
     name.appendChild(enlace);
+
+    /*
+function filtrarPorRock(arraySongs){
+    if (arraySongs.genres.includes('rock'))
+    return arraySongs
+}
+const listaRock = arraySongs.filter(filtrarPorRock)
+console.log({listaRock})
+console.log('arraySongs', JSON.stringify (arraySongs)) 
+
+function fetchRock 
+*/
