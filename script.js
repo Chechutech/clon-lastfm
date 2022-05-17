@@ -188,6 +188,7 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
+<<<<<<< HEAD
 //The biggest
 
 function fetchBiggest() {
@@ -244,3 +245,19 @@ function fetchBiggest() {
 }
 const biggestFilter =  document.querySelector('.theBiggestFilter');
 biggestFilter.addEventListener("click", fetchBiggest);
+=======
+
+
+const groupBy = function (miarray, prop) {
+    return miarray.reduce(function(groups, item) {
+        var val = item[prop];
+        groups[val] = groups[val] || {date: item.date, pv: 0, ac: 0,ev: 0};
+        groups[val].pv += item.pv;
+        groups[val].ac += item.ac;
+        groups[val].ev += item.ev;
+        return groups;
+    }, {});
+}
+
+console.log(groupBy(rawtData,'date'));
+>>>>>>> fdb3816e318bb0724422095211815235a7d93750
