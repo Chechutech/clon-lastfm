@@ -1,6 +1,6 @@
 window.onload=function(){
     $(`#onload`).fadeOut();
-    $(body).removeClass("hidden");
+    $('body').removeClass("hidden");
 }
 
 const listSong = document.getElementById("listSong");
@@ -43,7 +43,10 @@ function createListSong(song) {
     // traer el nombre de la canción
     const name = document.createElement("td");
     name.classList.add("name");
-    name.textContent = song[i].name;
+    const enlace = document.createElement("a");
+    enlace.setAttribute("href", song[i].url);
+    enlace.textContent = song[i].name;
+    name.appendChild(enlace)
 
     //traer el nombre del grupo
     let newGroupNameSong = document.createElement("td");
@@ -64,64 +67,6 @@ function createListSong(song) {
     card.appendChild(listTitle);
   }
   listSong.appendChild(card);
-}
-
-
-//createListSong(fetchSongs());
-
-function createListSong(song){
-    
-    // crear la tabla
-    let table = document.createElement('table');
-    table.classList.add('Music');
-       // crear tabla body
-    let body = document.createElement('tbody');
-    body.classList.add('bodytable');
-    
-    for(let i=0; i<song.length; i++){
-        
-        let rowListSong = document.createElement('tr');
-        rowListSong.classList.add('element-row');
-        
-        
-        // crear icono
-        const iconList = document.createElement('td');
-       iconList.classList.add('fa-solid');
-        iconList.classList.add('fa-circle-play');
-        rowListSong.appendChild(iconList);
-
-        // crear el numero de la lista
-        let attr = document.createElement('td');
-        attr.classList.add('listnumer');
-        attr.textContent = song[i].attr;
-        rowListSong.appendChild(attr);
-
-
-        // traer el nombre de la canción
-        let name = document.createElement('td');
-        name.classList.add('name');
-        name.textContent = song[i].name;
-        rowListSong.appendChild(name);
-        
-        //traer el nombre del grupo
-        let newGroupNameSong = document.createElement('td');
-        newGroupNameSong.classList.add('nameGroup-table');
-        newGroupNameSong.textContent = song[i].artist.name;
-        rowListSong.appendChild(newGroupNameSong);
-        
-        // traer número de escuchas
-        let newListeners = document.createElement('td');
-        newListeners.classList.add('listeners-table');
-        newListeners.textContent = song[i].listeners + ' listeners';
-        rowListSong.appendChild(newListeners);
-
-        
-        body.appendChild(rowListSong);
-        table.appendChild(body);     
-      
-    }
-     
-    listSong.appendChild(table)
 }
 
 
