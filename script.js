@@ -43,10 +43,11 @@ function createListSong(song) {
 
     // traer el nombre de la canción
     const name = document.createElement("td");
-    const enlace = document.createElement("a");
     name.classList.add("name");
-    name.innerHTML = song[i].name;
+    const enlace = document.createElement("a");
     enlace.setAttribute("href", song[i].url);
+    name.textContent = song[i].name;
+    
     name.appendChild(enlace);
 
 
@@ -200,3 +201,4 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
+
