@@ -40,10 +40,17 @@ function createListSong(song) {
     iconList.classList.add("fa-solid");
     iconList.classList.add("fa-circle-play");
 
-    // traer el nombre de la canción
+    /* traer el nombre de la canción
     const name = document.createElement("td");
     name.classList.add("name");
-    name.textContent = song[i].name;
+    name.textContent = song[i].name;*/
+    const name = document.createElement("td");
+    const enlace = document.createElement("a");
+    name.classList.add("name");
+    name.innerHTML = song[i].name;
+    enlace.href= "https://www.exampleurl.com";
+    name.appendChild(enlace);
+
 
     //traer el nombre del grupo
     let newGroupNameSong = document.createElement("td");
@@ -252,3 +259,6 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
+
+
+
