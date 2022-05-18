@@ -200,7 +200,7 @@ function fetchBiggest() {
       console.log(arraySongs)
 
       //Creamos un nuevo objeto donde vamos a almacenar por grupos. 
-git add .
+
       let escuchasArtista = {}
       //Recorremos el array 
       arraySongs.forEach( x => {
