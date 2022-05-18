@@ -1,4 +1,9 @@
+window.onload=function(){
+    $(`#onload`).fadeOut();
+    $(body).removeClass("hidden");
+}
 
+const listSong = document.getElementById("listSong");
 
 let arraySongs = []
 function fetchSongs() {
@@ -247,3 +252,4 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
+ 
