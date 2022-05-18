@@ -1,5 +1,4 @@
 
-
 header {
     height:6vh;
     background-color: #222;
@@ -71,22 +70,16 @@ ol {
     align-items: stretch;
 }
 
-.grid {
-    margin: 0 auto;
-    display: grid;
-    grid-gap: 1rem;
-    padding: 1rem;
-}
-.genre {
-    position: relative;
-    display: inline-block;
-    text-align: center
+.name-enlace, .name-grupo-enlace{
+  text-decoration: none;
+  color: black;
 }
 
-@media (min-width: 600px) {
-    .grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
+
+.genre {
+  position: relative;
+  display: inline-block;
+  text-align: center
 }
 
 .genre-text {
@@ -95,6 +88,26 @@ ol {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
+}
+
+.botones-centro{
+  height: 6em;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.botones-text{
+  padding-left: 3em;
+  padding-right: 3em;
+  text-decoration: none;
+  color: #222;
+  font-size: 1.5em;
+}
+
+.botones-text:hover{
+  color: black;
+  text-decoration: underline;
 }
 
 
