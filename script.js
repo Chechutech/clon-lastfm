@@ -1,8 +1,10 @@
+//Spinner de carga
 window.onload=function(){
     $(`#onload`).fadeOut();
     $('body').removeClass("hidden");
 }
 
+//Fetch de canciones para el listado general (Historia 1 +2)
 const listSong = document.getElementById("listSong");
 
 let arraySongs = []
@@ -20,15 +22,16 @@ function fetchSongs() {
 
 fetchSongs();
 
+//Función crea listado general (Historia 1 + 2)
 function createListSong(song) {
-  // crear el ol
+  // crear la tabla
   let card = document.createElement("table");
   card.classList.add("table");
   card.classList.add("table-striped");
 
   
   //crear título de la lista
-  let listTitle = document.createElement("tr");
+  let listTitle = document.createElement("tbody");
   listTitle.classList.add("list-title");
 
   for (let i = 0; i < song.length; i++) {
@@ -36,24 +39,32 @@ function createListSong(song) {
     let newList = document.createElement("tr");
     newList.classList.add("element-list");
 
+    //crear números
+    let numberList = document.createElement("td");
+    numberList.textContent = i+1;
+    
     // crear icono
-    let iconList = document.createElement("i");
+    const iconList = document.createElement("i");
     iconList.classList.add("fa-solid");
     iconList.classList.add("fa-circle-play");
 
-    // traer el nombre de la canción y crear url
+    // traer el nombre de la canción y crear url (Historia 10)
     const name = document.createElement("td");
     name.classList.add("name");
     const enlace = document.createElement("a");
+    enlace.classList.add("name-enlace");
     enlace.setAttribute("href", song[i].url);
+    enlace.setAttribute("target","_blank");
     enlace.textContent = song[i].name;
-    name.appendChild(enlace)
+    name.appendChild(enlace);
 
-    //traer el nombre del grupo
+    //traer el nombre del grupo y crear url (Historia 11)
     let newGroupNameSong = document.createElement("td");
     newGroupNameSong.classList.add("nameGroup-list");
     const enlaceGrupo = document.createElement("a");
+    enlaceGrupo.classList.add("name-grupo-enlace");
     enlaceGrupo.setAttribute("href", song[i].artist.url);
+    enlaceGrupo.setAttribute("target","_blank");
     enlaceGrupo.textContent = song[i].artist.name;
     newGroupNameSong.appendChild(enlaceGrupo)
 
@@ -62,19 +73,20 @@ function createListSong(song) {
     newListeners.classList.add("listeners-list");
     newListeners.textContent = song[i].listeners + " listeners";
 
+    newList.appendChild(numberList);
     newList.appendChild(iconList);
     newList.appendChild(newGroupNameSong);
     newList.appendChild(name);
     newList.appendChild(newListeners);
 
-    card.appendChild(newList);
     card.appendChild(listTitle);
+    listTitle.appendChild(newList);
   }
   listSong.appendChild(card);
 }
 
 
-//Historia 3 - 
+//Historia 3 - Top 10
 function fetchTop10Songs() {
   listSong.innerHTML = "";
   fetch("music.json")
@@ -95,6 +107,7 @@ function fetchTop10Songs() {
 const buttonTop10 = document.querySelector(".topTenFilter");
 buttonTop10.addEventListener("click", fetchTop10Songs);
 
+//Historia 2
 const overview = document.querySelector(".overviewFilter");
 overview.addEventListener("click", fetchSongs);
 
@@ -118,6 +131,7 @@ function fetchRockSongs() {
 const rock = document.getElementById('rock');
 rock.addEventListener("click", fetchRockSongs);
 
+//Historia 5 hip-hop
 function fetchHipHopSongs() {
     listSong.innerHTML = "";
     fetch("music.json")
@@ -136,6 +150,26 @@ function fetchHipHopSongs() {
 const hipHop = document.getElementById('Hiphop');
 hipHop.addEventListener("click", fetchHipHopSongs);
 
+//Historia 6 - Indie
+function fetchIndieSongs() {
+  listSong.innerHTML = "";
+  fetch("music.json")
+    .then((response) => response.json())
+    .then((data) => {
+        function filtrarPorIndie(data) {
+      if (data.genres.includes("indie"
+      ))
+      return data
+    };
+    const listaIndie = data.filter(filtrarPorIndie)
+  console.log({listaIndie})
+  createListSong(listaIndie)
+})
+}
+const indie = document.getElementById('indie');
+indie.addEventListener("click", fetchIndieSongs);
+
+//Historia 7 - jazz
 function fetchJazzSongs() {
     listSong.innerHTML = "";
     fetch("music.json")
@@ -154,6 +188,7 @@ function fetchJazzSongs() {
 const jazz = document.getElementById('jazz');
 jazz.addEventListener("click", fetchJazzSongs); 
 
+//Historia 8 - Pop
 function fetchPopSongs() {
     listSong.innerHTML = "";
     fetch("music.json")
@@ -172,24 +207,18 @@ function fetchPopSongs() {
 const pop = document.getElementById('pop');
 pop.addEventListener("click", fetchPopSongs);
 
-function fetchIndieSongs() {
-    listSong.innerHTML = "";
-    fetch("music.json")
-      .then((response) => response.json())
-      .then((data) => {
-          function filtrarPorIndie(data) {
-        if (data.genres.includes("indie"
-        ))
-        return data
-      };
-      const listaIndie = data.filter(filtrarPorIndie)
-    console.log({listaIndie})
-    createListSong(listaIndie)
- })
+//Historia 9
+
+export function changeColor(selector) {
+  let element = document.querySelector(selector);
+  element.style.color = 'red';
+  console.log(selector)
 }
-const indie = document.getElementById('indie');
-indie.addEventListener("click", fetchIndieSongs);
-//The biggest
+
+overview.addEventListener("click", ()=>changeColor('.overviewFilter'));
+buttonTop10.addEventListener("click", ()=>changeColor('.topTenFilter'));
+
+//Historia 12 - The biggest
 
 function fetchBiggest() {
   listSong.innerHTML = "";
@@ -247,17 +276,5 @@ function fetchBiggest() {
 const biggestFilter =  document.querySelector('.theBiggestFilter');
 biggestFilter.addEventListener("click", fetchBiggest);
 
-
-const groupBy = function (miarray, prop) {
-    return miarray.reduce(function(groups, item) {
-        var val = item[prop];
-        groups[val] = groups[val] || {date: item.date, pv: 0, ac: 0,ev: 0};
-        groups[val].pv += item.pv;
-        groups[val].ac += item.ac;
-        groups[val].ev += item.ev;
-        return groups;
-    }, {});
-}
-
-console.log(groupBy(rawtData,'date'));
+biggestFilter.addEventListener("click", ()=>changeColor('.theBiggestFilter'));
 
