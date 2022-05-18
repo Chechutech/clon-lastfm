@@ -263,6 +263,5 @@ const groupBy = function (miarray, prop) {
 }
 
 console.log(groupBy(rawtData,'date'));
-//>>>>>>> b3f372592e3cc5c1e2432633c8d8e260f6d46bae
 //>>>>>>> d524facd73d6afdccaa70cba569ca3f16ed36464
  
