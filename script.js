@@ -26,6 +26,7 @@ function createListSong(song) {
   card.classList.add("table");
   card.classList.add("table-striped");
 
+  
   //crear título de la lista
   let listTitle = document.createElement("tr");
   listTitle.classList.add("list-title");
