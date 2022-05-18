@@ -40,21 +40,21 @@ function createListSong(song) {
     iconList.classList.add("fa-solid");
     iconList.classList.add("fa-circle-play");
 
-
-    // traer el nombre de la canción
+    // traer el nombre de la canción y crear url
     const name = document.createElement("td");
     name.classList.add("name");
     const enlace = document.createElement("a");
     enlace.setAttribute("href", song[i].url);
-    name.textContent = song[i].name;
-    
+    enlace.textContent = song[i].name;
     name.appendChild(enlace);
-
 
     //traer el nombre del grupo
     let newGroupNameSong = document.createElement("td");
     newGroupNameSong.classList.add("nameGroup-list");
-    newGroupNameSong.textContent = song[i].artist.name;
+    const enlaceGrupo = document.createElement("a");
+    enlaceGrupo.setAttribute("href", song[i].artist.url);
+    enlaceGrupo.textContent = song[i].artist.name;
+    newGroupNameSong.appendChild(enlaceGrupo)
 
     // traer número de escuchas
     let newListeners = document.createElement("td");
