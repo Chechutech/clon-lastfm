@@ -192,7 +192,10 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9507e8afeddcb0fce1408a182d3a202523ced1bd
 //The biggest
 
 function fetchBiggest() {
@@ -249,3 +252,21 @@ function fetchBiggest() {
 }
 const biggestFilter =  document.querySelector('.theBiggestFilter');
 biggestFilter.addEventListener("click", fetchBiggest);
+<<<<<<< HEAD
+=======
+
+
+const groupBy = function (miarray, prop) {
+    return miarray.reduce(function(groups, item) {
+        var val = item[prop];
+        groups[val] = groups[val] || {date: item.date, pv: 0, ac: 0,ev: 0};
+        groups[val].pv += item.pv;
+        groups[val].ac += item.ac;
+        groups[val].ev += item.ev;
+        return groups;
+    }, {});
+}
+
+console.log(groupBy(rawtData,'date'));
+
+>>>>>>> 9507e8afeddcb0fce1408a182d3a202523ced1bd
