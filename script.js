@@ -188,7 +188,6 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
-<<<<<<< HEAD
 //The biggest
 
 function fetchBiggest() {
@@ -246,10 +245,7 @@ git add .
 }
 const biggestFilter =  document.querySelector('.theBiggestFilter');
 biggestFilter.addEventListener("click", fetchBiggest);
-=======
 
-<<<<<<< HEAD
-=======
 
 const groupBy = function (miarray, prop) {
     return miarray.reduce(function(groups, item) {
@@ -263,5 +259,4 @@ const groupBy = function (miarray, prop) {
 }
 
 console.log(groupBy(rawtData,'date'));
->>>>>>> fdb3816e318bb0724422095211815235a7d93750
->>>>>>> b3f372592e3cc5c1e2432633c8d8e260f6d46bae
+
