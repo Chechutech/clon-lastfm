@@ -12,3 +12,29 @@ function filtrarPorUno(elemento){
 }
 const nuevoArray = array.filter(filtrarPorUno)
 console.log(nuevoArray)
+
+const createTD = document.createElement("td");
+const createTDA = document.createElement("a");
+createTD.innerHTML = "SURNAME Name";
+createTDA.setAttribute("href", "https://www.exampleurl.com");
+createTD.appendChild(createTDA);
+
+
+const name = document.createElement("td");
+    const enlace = document.createElement("a");
+    name.classList.add("name");
+    name.innerHTML = song[i].name;
+    enlace.setAttribute("href", "https://www.exampleurl.com");
+    name.appendChild(enlace);
+
+    /*
+function filtrarPorRock(arraySongs){
+    if (arraySongs.genres.includes('rock'))
+    return arraySongs
+}
+const listaRock = arraySongs.filter(filtrarPorRock)
+console.log({listaRock})
+console.log('arraySongs', JSON.stringify (arraySongs)) 
+
+function fetchRock 
+*/

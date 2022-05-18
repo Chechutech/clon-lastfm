@@ -1,6 +1,6 @@
 window.onload=function(){
     $(`#onload`).fadeOut();
-    $(body).removeClass("hidden");
+    $('body').removeClass("hidden");
 }
 
 const listSong = document.getElementById("listSong");
@@ -11,9 +11,9 @@ function fetchSongs() {
   fetch("music.json")
     .then((response) => response.json())
     .then((data) => {
-      createListSong(data)
-      arraySongs = data
-      console.log(arraySongs)
+      createListSong(data);
+      arraySongs = data;
+      console.log(arraySongs);
       console.log(data);
     });
 }
@@ -40,15 +40,21 @@ function createListSong(song) {
     iconList.classList.add("fa-solid");
     iconList.classList.add("fa-circle-play");
 
-    // traer el nombre de la canción
+    // traer el nombre de la canción y crear url
     const name = document.createElement("td");
     name.classList.add("name");
-    name.textContent = song[i].name;
+    const enlace = document.createElement("a");
+    enlace.setAttribute("href", song[i].url);
+    enlace.textContent = song[i].name;
+    name.appendChild(enlace)
 
     //traer el nombre del grupo
     let newGroupNameSong = document.createElement("td");
     newGroupNameSong.classList.add("nameGroup-list");
-    newGroupNameSong.textContent = song[i].artist.name;
+    const enlaceGrupo = document.createElement("a");
+    enlaceGrupo.setAttribute("href", song[i].artist.url);
+    enlaceGrupo.textContent = song[i].artist.name;
+    newGroupNameSong.appendChild(enlaceGrupo)
 
     // traer número de escuchas
     let newListeners = document.createElement("td");
@@ -67,65 +73,7 @@ function createListSong(song) {
 }
 
 
-//createListSong(fetchSongs());
-
-function createListSong(song){
-    
-    // crear la tabla
-    let table = document.createElement('table');
-    table.classList.add('Music');
-       // crear tabla body
-    let body = document.createElement('tbody');
-    body.classList.add('bodytable');
-    
-    for(let i=0; i<song.length; i++){
-        
-        let rowListSong = document.createElement('tr');
-        rowListSong.classList.add('element-row');
-        
-        
-        // crear icono
-        const iconList = document.createElement('td');
-       iconList.classList.add('fa-solid');
-        iconList.classList.add('fa-circle-play');
-        rowListSong.appendChild(iconList);
-
-        // crear el numero de la lista
-        let attr = document.createElement('td');
-        attr.classList.add('listnumer');
-        attr.textContent = song[i].attr;
-        rowListSong.appendChild(attr);
-
-
-        // traer el nombre de la canción
-        let name = document.createElement('td');
-        name.classList.add('name');
-        name.textContent = song[i].name;
-        rowListSong.appendChild(name);
-        
-        //traer el nombre del grupo
-        let newGroupNameSong = document.createElement('td');
-        newGroupNameSong.classList.add('nameGroup-table');
-        newGroupNameSong.textContent = song[i].artist.name;
-        rowListSong.appendChild(newGroupNameSong);
-        
-        // traer número de escuchas
-        let newListeners = document.createElement('td');
-        newListeners.classList.add('listeners-table');
-        newListeners.textContent = song[i].listeners + ' listeners';
-        rowListSong.appendChild(newListeners);
-
-        
-        body.appendChild(rowListSong);
-        table.appendChild(body);     
-      
-    }
-     
-    listSong.appendChild(table)
-}
-
-
-//Historia 3 - falta vaciar la lista al empezar -
+//Historia 3 - 
 function fetchTop10Songs() {
   listSong.innerHTML = "";
   fetch("music.json")
@@ -150,18 +98,6 @@ const overview = document.querySelector(".overviewFilter");
 overview.addEventListener("click", fetchSongs);
 
 //Historia 4 - rock
-/*
-function filtrarPorRock(arraySongs){
-    if (arraySongs.genres.includes('rock'))
-    return arraySongs
-}
-const listaRock = arraySongs.filter(filtrarPorRock)
-console.log({listaRock})
-console.log('arraySongs', JSON.stringify (arraySongs)) 
-
-function fetchRock 
-*/
-
 function fetchRockSongs() {
   
  listSong.innerHTML = "";
@@ -252,4 +188,84 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
+<<<<<<< HEAD
+ 
+=======
+<<<<<<< HEAD
+//The biggest
+
+function fetchBiggest() {
+  listSong.innerHTML = "";
+  fetch("music.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const arraySongs = data
+      
+      console.log(arraySongs)
+
+      //Creamos un nuevo objeto donde vamos a almacenar por grupos. 
+      let escuchasArtista = {}
+      //Recorremos el array 
+      arraySongs.forEach( x => {
+        if( !escuchasArtista.hasOwnProperty(x.artist.name)){
+          escuchasArtista[x.artist.name] = {
+            nombre:x.artist.name,
+            escuchas: 0
+          }
+        }
+  
+        //Agregamos los datos de escuchas. 
+        let listenersNumber = parseInt(x.listeners)
+        escuchasArtista[x.artist.name].escuchas += listenersNumber
+  
+      })
+
+      console.log({escuchasArtista})
+      
+      const convertedListenersNumber = Object.values(escuchasArtista)
+      console.log(convertedListenersNumber)
+
+      convertedListenersNumber.sort(function compare(listenersA, listenersB) {
+        let bigListenersA = listenersA.escuchas;
+        let bigListenersB = listenersB.escuchas;
+        return bigListenersB - bigListenersA;
+      });
+      
+      const theBiggest = convertedListenersNumber[0]
+      console.log(theBiggest);
+      createListSong(fetchBiggest);
+
+      function filtrarPorMoreListeners(data) {
+        if (data.artist.name.includes(theBiggest.nombre
+            ))
+            return data
+      };
+        const listaTheBiggest = data.filter(filtrarPorMoreListeners)
+        console.log({listaTheBiggest})
+        createListSong(listaTheBiggest)
+
+    });
+}
+const biggestFilter =  document.querySelector('.theBiggestFilter');
+biggestFilter.addEventListener("click", fetchBiggest);
+=======
+
+<<<<<<< HEAD
+=======
+
+const groupBy = function (miarray, prop) {
+    return miarray.reduce(function(groups, item) {
+        var val = item[prop];
+        groups[val] = groups[val] || {date: item.date, pv: 0, ac: 0,ev: 0};
+        groups[val].pv += item.pv;
+        groups[val].ac += item.ac;
+        groups[val].ev += item.ev;
+        return groups;
+    }, {});
+}
+
+console.log(groupBy(rawtData,'date'));
+>>>>>>> fdb3816e318bb0724422095211815235a7d93750
+>>>>>>> b3f372592e3cc5c1e2432633c8d8e260f6d46bae
+>>>>>>> d524facd73d6afdccaa70cba569ca3f16ed36464
  
