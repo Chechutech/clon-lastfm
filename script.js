@@ -188,10 +188,6 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
-//<<<<<<< HEAD
- 
-//=======
-//<<<<<<< HEAD
 //The biggest
 
 function fetchBiggest() {
@@ -248,7 +244,6 @@ function fetchBiggest() {
 }
 const biggestFilter =  document.querySelector('.theBiggestFilter');
 biggestFilter.addEventListener("click", fetchBiggest);
-//=======
 
 
 const groupBy = function (miarray, prop) {
@@ -263,5 +258,3 @@ const groupBy = function (miarray, prop) {
 }
 
 console.log(groupBy(rawtData,'date'));
-//>>>>>>> d524facd73d6afdccaa70cba569ca3f16ed36464
- 
