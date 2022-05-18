@@ -20,7 +20,6 @@ createTDA.setAttribute("href", "https://www.exampleurl.com");
 createTD.appendChild(createTDA);
 
 
-<<<<<<< HEAD
 // const name = document.createElement("td");
 //     const enlace = document.createElement("a");
 //     name.classList.add("name");
@@ -28,23 +27,3 @@ createTD.appendChild(createTDA);
 //     enlace.setAttribute("href", "https://www.exampleurl.com");
 //     name.appendChild(enlace);
 
-=======
-const name = document.createElement("td");
-    const enlace = document.createElement("a");
-    name.classList.add("name");
-    name.innerHTML = song[i].name;
-    enlace.setAttribute("href", "https://www.exampleurl.com");
-    name.appendChild(enlace);
-
-    /*
-function filtrarPorRock(arraySongs){
-    if (arraySongs.genres.includes('rock'))
-    return arraySongs
-}
-const listaRock = arraySongs.filter(filtrarPorRock)
-console.log({listaRock})
-console.log('arraySongs', JSON.stringify (arraySongs)) 
-
-function fetchRock 
-*/
->>>>>>> d524facd73d6afdccaa70cba569ca3f16ed36464

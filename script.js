@@ -35,6 +35,9 @@ function createListSong(song) {
     let newList = document.createElement("tr");
     newList.classList.add("element-list");
 
+    //crear números
+    let numberList = document.createElement("td");
+    numberList.textContent = i+1;
     // crear icono
 
     const iconList = document.createElement("i");
@@ -47,6 +50,7 @@ function createListSong(song) {
     const enlace = document.createElement("a");
     enlace.classList.add("name-enlace");
     enlace.setAttribute("href", song[i].url);
+    enlace.setAttribute("target","_blank");
     enlace.textContent = song[i].name;
     name.appendChild(enlace);
 
@@ -56,6 +60,7 @@ function createListSong(song) {
     const enlaceGrupo = document.createElement("a");
     enlaceGrupo.classList.add("name-grupo-enlace");
     enlaceGrupo.setAttribute("href", song[i].artist.url);
+    enlaceGrupo.setAttribute("target","_blank");
     enlaceGrupo.textContent = song[i].artist.name;
     newGroupNameSong.appendChild(enlaceGrupo)
 
@@ -64,7 +69,7 @@ function createListSong(song) {
     newListeners.classList.add("listeners-list");
     newListeners.textContent = song[i].listeners + " listeners";
 
-
+    newList.appendChild(numberList);
     newList.appendChild(iconList);
     newList.appendChild(newGroupNameSong);
     newList.appendChild(name);
@@ -192,10 +197,18 @@ function fetchIndieSongs() {
 }
 const indie = document.getElementById('indie');
 indie.addEventListener("click", fetchIndieSongs);
-<<<<<<< HEAD
 
-=======
->>>>>>> 9507e8afeddcb0fce1408a182d3a202523ced1bd
+//Historia 9
+
+export function changeColor(selector) {
+  let element = document.querySelector(selector);
+  element.style.color = 'red';
+  console.log(selector)
+}
+
+overview.addEventListener("click", ()=>changeColor('.overviewFilter'));
+buttonTop10.addEventListener("click", ()=>changeColor('.topTenFilter'));
+
 //The biggest
 
 function fetchBiggest() {
@@ -252,21 +265,6 @@ function fetchBiggest() {
 }
 const biggestFilter =  document.querySelector('.theBiggestFilter');
 biggestFilter.addEventListener("click", fetchBiggest);
-<<<<<<< HEAD
-=======
 
+biggestFilter.addEventListener("click", ()=>changeColor('.theBiggestFilter'));
 
-const groupBy = function (miarray, prop) {
-    return miarray.reduce(function(groups, item) {
-        var val = item[prop];
-        groups[val] = groups[val] || {date: item.date, pv: 0, ac: 0,ev: 0};
-        groups[val].pv += item.pv;
-        groups[val].ac += item.ac;
-        groups[val].ev += item.ev;
-        return groups;
-    }, {});
-}
-
-console.log(groupBy(rawtData,'date'));
-
->>>>>>> 9507e8afeddcb0fce1408a182d3a202523ced1bd
