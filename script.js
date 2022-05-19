@@ -48,7 +48,6 @@ function createListSong(song) {
     iconList.classList.add("fa-solid");
     iconList.classList.add("fa-circle-play");
     newList.appendChild(iconList);
-    
 
     // traer el nombre de la canción, crear icono y crear url (Historia 10)
     const name = document.createElement("td");
@@ -74,7 +73,9 @@ function createListSong(song) {
     let newListeners = document.createElement("td");
     newListeners.classList.add("listeners-list");
     newListeners.textContent = song[i].listeners + " listeners";
-
+    
+    
+    
     newList.appendChild(numberList);
     newList.appendChild(newGroupNameSong);
     newList.appendChild(name);
