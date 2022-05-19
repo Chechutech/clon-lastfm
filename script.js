@@ -44,7 +44,7 @@ function createListSong(song) {
     numberList.textContent = i+1;
     
     // crear icono
-    const iconList = document.createElement("img");
+    const iconList = document.createElement("i");
     iconList.classList.add("fa-solid");
     iconList.classList.add("fa-circle-play");
     newList.appendChild(iconList);
@@ -224,19 +224,19 @@ let theBiggest=document.querySelector(".theBiggestFilter");
 theBiggest.addEventListener("click", clickorder3);
 
 function clickorder1(){
-       overviewMenu.style.color="rgb(186,0,0)"
+       overviewMenu.style.color="darkviolet"
        top10Listened.style.color="black"
        theBiggest.style.color="black"
     }
 function clickorder2(){
       overviewMenu.style.color="black"
-      top10Listened.style.color="rgb(186,0,0)"
+      top10Listened.style.color="darkviolet"
       theBiggest.style.color="black"
     }
     function clickorder3(){
       overviewMenu.style.color="black"
       top10Listened.style.color="black"
-      theBiggest.style.color="rgb(186,0,0)"
+      theBiggest.style.color="darkviolet"
     }
 
 //Historia 12 - The biggest
