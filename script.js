@@ -48,7 +48,6 @@ function createListSong(song) {
     iconList.classList.add("fa-solid");
     iconList.classList.add("fa-circle-play");
     newList.appendChild(iconList);
-    
 
     // traer el nombre de la canción, crear icono y crear url (Historia 10)
     const name = document.createElement("td");
@@ -74,7 +73,9 @@ function createListSong(song) {
     let newListeners = document.createElement("td");
     newListeners.classList.add("listeners-list");
     newListeners.textContent = song[i].listeners + " listeners";
-
+    
+    
+    
     newList.appendChild(numberList);
     newList.appendChild(newGroupNameSong);
     newList.appendChild(name);
@@ -209,15 +210,32 @@ const pop = document.getElementById('pop');
 pop.addEventListener("click", fetchPopSongs);
 
 //Historia 9
+document.querySelector(".overviewFilter")
 
-export function changeColor(selector) {
-  let element = document.querySelector(selector);
-  element.style.color = 'red';
-  console.log(selector)
-}
+let overviewMenu=document.querySelector(".overviewFilter");
+overviewMenu.addEventListener("click",clickorder1);
 
-overview.addEventListener("click", ()=>changeColor('.overviewFilter'));
-buttonTop10.addEventListener("click", ()=>changeColor('.topTenFilter'));
+let top10Listened=document.querySelector(".topTenFilter");
+top10Listened.addEventListener("click", clickorder2);
+
+let theBiggest=document.querySelector(".theBiggestFilter");
+theBiggest.addEventListener("click", clickorder3);
+
+function clickorder1(){
+       overviewMenu.style.color="rgb(186,0,0)"
+       top10Listened.style.color="black"
+       theBiggest.style.color="black"
+    }
+function clickorder2(){
+      overviewMenu.style.color="black"
+      top10Listened.style.color="rgb(186,0,0)"
+      theBiggest.style.color="black"
+    }
+    function clickorder3(){
+      overviewMenu.style.color="black"
+      top10Listened.style.color="black"
+      theBiggest.style.color="rgb(186,0,0)"
+    }
 
 //Historia 12 - The biggest
 
