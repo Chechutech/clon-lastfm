@@ -44,10 +44,12 @@ function createListSong(song) {
     numberList.textContent = i+1;
     
     // crear icono
-    const iconList = document.createElement("i");
+    const iconList = document.createElement("img");
     iconList.classList.add("fa-solid");
     iconList.classList.add("fa-circle-play");
     newList.appendChild(iconList);
+
+
 
     // traer el nombre de la canción, crear icono y crear url (Historia 10)
     const name = document.createElement("td");
