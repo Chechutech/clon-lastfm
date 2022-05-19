@@ -1,5 +1,4 @@
 
-
 header {
     height:6vh;
     background-color: #222;
@@ -16,7 +15,7 @@ body {
 }
 .hidden {
     overflow: hidden;
-    
+
 }
 .centrado {
     height: 100vh;
@@ -61,88 +60,105 @@ body {
       height: 32px;
     }
   }
+.catchtitle {
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  padding-top: 1em;
+  font-family: 'Bebas Neue';
+  color:darkviolet;
+}
+
 ul {
     list-style: none;
-}
-
-ol {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-}
-
-.grid {
-    margin: 0 auto;
-    display: grid;
-    grid-gap: 1rem;
-    padding: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5em;
     
-}
-.genre {
-    position: relative;
-    display: inline-block;
-    text-align: center
-    
-}
-
-@media (min-width: 600px) {
-    .grid {
-        grid-template-columns: repeat(5, 1fr);
     }
+
+  
+.name-enlace, .name-grupo-enlace{
+  text-decoration: none;
+  color: black;
 }
+
+.name-grupo-enlace {
+  font-weight: 700;
+}
+
+.genre {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  cursor: pointer; 
+  transition: all 0.3s ease-in-out;
+  
+  }
+
+.genre:hover{
+  transform: scale (1.1);
+  box-shadow:10px 8px 15px rgb(125, 125, 125);
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
+  
+}
+ 
+
 .avatarRock, .avatarhiphop, .avatarindie, .avatarjazz, .avatarpop {
  position: relative;
-  width:300px;
-    height:300px;
+  width:100%;
+    height:100%;
     border-radius:50%;
-    filter:blur(1px);
--webkit-filter:blur(1px), drop-shadow(6px 6px 6px rgba(0,0,0,0.9)); 
-filter: drop-shadow(6px 6px 6px rgba(0,0,0,0.9));
- }
+    filter: opacity(75%);
+   
+}
+
+ 
 .genre-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
+    z-index: 1000;
+    font-size: 1,9em;
+    text-shadow: 0 0 8px black;
+    font-family: 'Bebas Neue';
+}
+
+.botones-centro{
+  display: flex;
+  flex-wrap: wrap;
+  height: 6em;
+  display:flex;
+  justify-content: center;
+  gap: 3em;
+  padding-top: 1em;
+  margin-bottom: 5em;
+  font-family: 'Bebas Neue';
+}
+
+.botones-text{
+  
+  text-decoration: none;
+  color: black; 
+  font-size: 1.5em;
+}
+
+.botones-text:hover{
+  color: black;
+  text-decoration: underline;
+}
+.botones-text:active {
+  color:aqua;
 }
 
 
 
-/* Colores:
-   --color-primary:  #222
-   --color-secondary: rgba(110, 69, 51, 1);
-   --color-focus-menu: #B90000;
-   --color-background: #fff;
-   --color-list-odd: #f2f2f2;
 
-*/
-
-/* Imágenes:
-logo: https://www.last.fm/static/images/logo_static_mob.0798d7258e3d.png
-rock: https://lastfm.freetls.fastly.net/i/u/avatar300s/366962d5733a4aee8bee4a136c239d47.jpg
-hip-hop: https://lastfm.freetls.fastly.net/i/u/avatar300s/51810a59cb17449bb2d6b8b62d63ce78.jpg
-indie:https://lastfm.freetls.fastly.net/i/u/avatar300s/c825233e09af4641a5ce7b6ece883aae.jpg
-jazz:https://lastfm.freetls.fastly.net/i/u/avatar300s/c0a9af93c8c843afb43cd6dc24b0bbf3.jpg
-reggae: https://lastfm.freetls.fastly.net/i/u/avatar300s/94428d295a60403e9327cbfb86e2fbf6.jpg
-*/
-
-/* Filtros:
-
-rock:   sepia(90%);
-hip-hop:contrast(200%);
-indie:  grayscale(50%);
-jazz:   hue-rotate(90deg);
-reggae: saturate(10%);
-
-*/
-
-/* Fuente:
-    font-family:Open Sans,Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif;
-
-*/
-
-/* Utiliza  la propiedad counter-increment: step-counter; para pintar el número de la canción
- */
 
